@@ -1,0 +1,23 @@
+# User specified
+archive.zip
+
+# System
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+mld_text/
+venv/
+env/
+
+# Data
+BBC News Summary/
+*.pdf
+
+# Artifacts & Models
+results/
+saved_models/

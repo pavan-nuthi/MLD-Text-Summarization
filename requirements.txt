@@ -1,0 +1,11 @@
+torch>=2.0.0
+transformers>=4.30.0
+datasets>=2.12.0
+rouge_score
+bert_score
+nltk
+scikit-learn
+pandas
+numpy
+tqdm
+accelerate
