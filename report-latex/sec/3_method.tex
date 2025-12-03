@@ -8,7 +8,14 @@
    \label{fig:architecture}
 \end{figure}
 
-In this section, we describe the two architectures employed in our study. Figure \ref{fig:architecture} provides a high-level overview of both the BERTSum and BART models.
+In this section, we describe the two architectures employed in our study. Figure \ref{fig:architecture} provides a high-level overview of both the BERTSum and BART models, while Figure \ref{fig:network_arch} details the specific network components.
+
+\begin{figure*}[t]
+  \centering
+   \includegraphics[width=1.0\linewidth]{network_architecture.png}
+   \caption{Detailed network architecture. Left: BERTSum with inter-sentence Transformer. Right: BART encoder-decoder with cross-attention.}
+   \label{fig:network_arch}
+\end{figure*}
 
 \subsection{BERTSum (Extractive)}
 For our extractive baseline, we employ BERTSum \cite{liu2019text}. Standard BERT is trained as a masked language model and next-sentence predictor, which is not directly optimized for sentence selection. BERTSum adapts BERT by inserting a \texttt{[CLS]} token at the beginning of each sentence in the input document. The vector representation of these \texttt{[CLS]} tokens is then passed through a summarization layer (a simple linear classifier) to predict a binary label $y_i \in \{0, 1\}$ for each sentence, indicating whether it should be included in the summary.
