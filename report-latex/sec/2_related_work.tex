@@ -1,0 +1,11 @@
+\section{Related Work}
+\label{sec:related_work}
+
+\subsection{Extractive Summarization}
+Early work in extractive summarization relied on statistical features such as term frequency and sentence position. With the advent of deep learning, recurrent neural networks (RNNs) became popular for sequence labeling tasks. More recently, Transformer-based models like BERT \cite{devlin2018bert} have revolutionized the field. Liu \etal \cite{liu2019text} proposed BERTSum, which modifies the BERT architecture to better handle document-level representation and sentence selection, achieving state-of-the-art results on several benchmarks.
+
+\subsection{Abstractive Summarization}
+Abstractive summarization has traditionally been viewed as a sequence-to-sequence problem. Early neural approaches used LSTM-based encoder-decoder architectures with attention mechanisms. The introduction of the Transformer architecture \cite{vaswani2017attention} enabled the training of much larger and more powerful models. BART \cite{lewis2019bart} and T5 \cite{raffel2019exploring} are denoising autoencoders pre-trained on large corpora, which have shown exceptional performance in generative tasks, including summarization.
+
+\subsection{News Summarization}
+News summarization is a well-studied subfield due to the availability of large datasets like CNN/DailyMail and XSum. The BBC News Summary dataset provides a valuable resource for evaluating models on multi-domain news articles, offering a balanced testbed for comparing extractive and abstractive techniques.

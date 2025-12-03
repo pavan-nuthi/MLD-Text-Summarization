@@ -1,0 +1,17 @@
+\section{Introduction}
+\label{sec:intro}
+
+The rapid proliferation of digital information has made automated text summarization an essential tool for efficient data consumption. From news aggregation to scientific literature review, the ability to automatically distill key information from vast amounts of text is highly valuable. Text summarization systems are generally classified into two paradigms: \textit{extractive} and \textit{abstractive}.
+
+Extractive summarization involves selecting a subset of existing sentences from the source document to form a summary. This approach benefits from simplicity and factual consistency, as the generated summary is composed entirely of the original text. However, it often suffers from a lack of coherence and flow, as the selected sentences may not transition smoothly.
+
+Abstractive summarization, conversely, generates new sentences that capture the core meaning of the source text, much like a human summarizer would. This allows for more concise and fluent summaries but introduces the challenge of "hallucination," where the model generates plausible but factually incorrect information.
+
+In this work, we conduct a systematic comparison of these two paradigms using state-of-the-art models: **BERTSum** \cite{liu2019text} representing the extractive approach, and **BART** \cite{lewis2019bart} representing the abstractive approach. We fine-tune and evaluate these models on the BBC News Summary dataset, a diverse collection of news articles covering various domains.
+
+Our contributions are as follows:
+\begin{itemize}
+    \item We provide a direct performance comparison of BERTSum and BART on the BBC News dataset using ROUGE and BERTScore metrics.
+    \item We analyze the qualitative differences between the two approaches, highlighting the trade-off between fluency and faithfulness.
+    \item We offer insights into the computational efficiency and practical applicability of each model for news summarization tasks.
+\end{itemize}

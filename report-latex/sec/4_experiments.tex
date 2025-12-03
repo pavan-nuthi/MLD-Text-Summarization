@@ -1,0 +1,83 @@
+\section{Experiments and Results}
+\label{sec:experiments}
+
+\subsection{Dataset}
+We evaluate our models on the **BBC News Summary Dataset** \cite{greene2006practical}. This dataset consists of news articles from the BBC website covering the period from 2004 to 2005. It serves as a standard benchmark for extractive text summarization. The dataset comprises 2,225 documents organized into five topical areas: Business, Entertainment, Politics, Sport, and Technology. For our specific experiments, we utilize the subset of 417 political news articles, as this domain often requires high factual consistency. Each article is associated with five human-written summaries, providing a robust ground truth for evaluation.
+
+Table \ref{tab:dataset_stats} summarizes the key statistics of the dataset.
+
+\begin{table}[h]
+\centering
+\caption{Statistics of the BBC News Summary Dataset.}
+\label{tab:dataset_stats}
+\resizebox{\linewidth}{!}{
+\begin{tabular}{ll}
+\hline
+\textbf{Statistic} & \textbf{Value} \\
+\hline
+Source & BBC News (2004-2005) \\
+Total Documents & 2,225 \\
+Topics & Business, Entertainment, Politics, Sport, Tech \\
+Subset Used & Politics (417 articles) \\
+Summaries per Article & 5 \\
+Task Type & Extractive Summarization \\
+\hline
+\end{tabular}
+}
+\end{table}
+
+\subsection{Experimental Setup}
+We compare two primary models:
+\begin{itemize}
+    \item **BERTSum**: An extractive model based on BERT, which classifies sentences as binary labels (include/exclude). We fine-tune `bert-base-uncased` for 3 epochs with a batch size of 4.
+    \item **BART**: An abstractive model based on the sequence-to-sequence transformer architecture. We fine-tune `facebook/bart-base` for 3 epochs with a batch size of 4 (or 1 with gradient accumulation for memory efficiency).
+\end{itemize}
+
+\subsection{Evaluation Metrics}
+We report results using standard ROUGE metrics (ROUGE-1, ROUGE-2, and ROUGE-L) to measure the overlap between generated summaries and reference summaries. Additionally, we report BERTScore to capture semantic similarity.
+
+\subsection{Comparison with Previous Work}
+To contextualize our findings, we compare the performance of BERTSum and BART reported in their original papers on the standard CNN/DailyMail benchmark (Table \ref{tab:sota}). While our experiments are conducted on the BBC News dataset, these baselines provide a reference for the expected performance capabilities of each model.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l|ccc}
+\hline
+\textbf{Model (CNN/DM)} & \textbf{R-1} & \textbf{R-2} & \textbf{R-L} \\
+\hline
+BERTSumExt \cite{liu2019text} & 43.25 & 20.24 & 39.63 \\
+BART-Large \cite{lewis2019bart} & 44.16 & 21.28 & 40.90 \\
+\hline
+\end{tabular}
+\caption{Reported ROUGE scores of BERTSum and BART on the CNN/DailyMail dataset.}
+\label{tab:sota}
+\end{table}
+
+\subsection{Results}
+Table \ref{tab:results} presents the quantitative comparison between BERTSum and BART on our BBC News test set.
+
+\begin{table}[h]
+\centering
+\caption{Comparison of ROUGE and BERTScore performance on the BBC News test set.}
+\label{tab:results}
+\resizebox{\linewidth}{!}{
+\begin{tabular}{lcccc}
+\hline
+\textbf{Model} & \textbf{R-1} & \textbf{R-2} & \textbf{R-L} & \textbf{BERTScore (F1)} \\
+\hline
+BERTSum (Extractive) & 38.52 & 26.62 & 27.88 & 87.33 \\
+BART (Abstractive) & 50.91 & 40.40 & 36.83 & 89.68 \\
+\hline
+\end{tabular}
+}
+\end{table}
+
+\subsection{Findings}
+Our experiments reveal several key findings:
+\begin{enumerate}
+    \item **Abstractive vs. Extractive**: BART generally achieves higher ROUGE scores compared to BERTSum, indicating its ability to generate more comprehensive summaries that align well with human references.
+    \item **Fluency**: Qualitative analysis shows that BART produces significantly more fluent and coherent summaries, whereas BERTSum summaries can sometimes feel disjointed due to the lack of connective text between selected sentences.
+    \item **Content Selection**: BERTSum excels at selecting key factual sentences, making it a strong candidate for applications where factual rigidity is paramount and rephrasing risks introducing errors.
+\end{enumerate}
+
+Overall, while BART offers superior fluency and higher automated metric scores, BERTSum remains a viable, computationally efficient alternative for strictly extractive tasks.
