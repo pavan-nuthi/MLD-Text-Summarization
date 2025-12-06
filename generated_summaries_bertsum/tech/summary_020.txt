@@ -1,0 +1,1 @@
+The revamp has been prompted by Microsoft's growing concern with security as well as increased competition from rival browsers. Earlier this month it released a security bulletin that patched eight critical security holes - some of which were found in the IE browser. Estimates of how many users Firefox has won over vary widely.

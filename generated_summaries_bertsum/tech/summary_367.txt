@@ -1,0 +1,1 @@
+Building batteries from new chemical mixes could boost power significantly, say industry experts. Some of the improvements in power use come simply because components on chips are shrinking, said Mr Trainor. Intel has also changed the way it creates transistors on silicon to reduce the power they need.

@@ -11,6 +11,9 @@ def load_bbc_data(data_path=None):
     
     Returns a DatasetDict with train, validation, and test splits.
     """
+    if data_path is None and os.path.exists("BBC News Summary"):
+        data_path = "BBC News Summary"
+
     if data_path and os.path.exists(data_path):
         print(f"Loading from local path: {data_path}")
         
@@ -32,6 +35,7 @@ def load_bbc_data(data_path=None):
         
         documents = []
         summaries = []
+        filenames = []
         
         for category in categories:
             cat_articles_path = os.path.join(articles_path, category)
@@ -61,9 +65,13 @@ def load_bbc_data(data_path=None):
                     print(f"Warning: Summary not found for {file}")
                     # Remove the last document to keep aligned
                     documents.pop()
+                    continue
+                
+                # Store filename (category/file)
+                filenames.append(f"{category}/{file}")
         
         # Create Dataset
-        data = {'document': documents, 'summary': summaries}
+        data = {'document': documents, 'summary': summaries, 'filename': filenames}
         full_dataset = Dataset.from_dict(data)
         
         # Split 80/10/10

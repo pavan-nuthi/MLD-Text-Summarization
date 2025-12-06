@@ -24,6 +24,7 @@ def main():
     eval_parser.add_argument("--model_type", type=str, required=True, choices=['bertsum', 'bart'])
     eval_parser.add_argument("--model_path", type=str, required=True)
     eval_parser.add_argument("--data_path", type=str, default=None)
+    eval_parser.add_argument("--split", type=str, default='all', choices=['train', 'validation', 'test', 'all'], help="Split to evaluate on")
     
     args = parser.parse_args()
     
