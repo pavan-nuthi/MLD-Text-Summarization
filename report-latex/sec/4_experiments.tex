@@ -2,7 +2,7 @@
 \label{sec:experiments}
 
 \subsection{Dataset}
-We evaluate our models on the **BBC News Summary Dataset** \cite{greene2006practical}. This dataset consists of news articles from the BBC website covering the period from 2004 to 2005. It serves as a standard benchmark for extractive text summarization. The dataset comprises 2,225 documents organized into five topical areas: Business, Entertainment, Politics, Sport, and Technology. For our specific experiments, we utilize the subset of 417 political news articles, as this domain often requires high factual consistency. Each article is associated with five human-written summaries, providing a robust ground truth for evaluation.
+We evaluate our models on the **BBC News Summary Dataset** \cite{greene2006practical}. This dataset consists of news articles from the BBC website covering the period from 2004 to 2005. It serves as a standard benchmark for extractive text summarization. The dataset comprises 2,225 documents organized into five topical areas: Business, Entertainment, Politics, Sport, and Technology. For our specific experiments, we utilize the full dataset containing all 2,225 articles across these five domains, ensuring a diverse and comprehensive evaluation. Each article is associated with five human-written summaries, providing a robust ground truth for evaluation.
 
 Table \ref{tab:dataset_stats} summarizes the key statistics of the dataset.
 
@@ -18,7 +18,7 @@ Table \ref{tab:dataset_stats} summarizes the key statistics of the dataset.
 Source & BBC News (2004-2005) \\
 Total Documents & 2,225 \\
 Topics & Business, Entertainment, Politics, Sport, Tech \\
-Subset Used & Politics (417 articles) \\
+Subset Used & Full Dataset (2,225 articles) \\
 Summaries per Article & 5 \\
 Task Type & Extractive Summarization \\
 \hline

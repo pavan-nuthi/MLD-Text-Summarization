@@ -35,6 +35,18 @@ Evaluate BART:
 python3 main.py evaluate --model_type bart --model_path ./saved_models/bart
 ```
 
+### Testing (Test Split Only)
+
+To evaluate specifically on the test set:
+
+```bash
+python3 main.py evaluate --model_type bertsum --model_path ./saved_models/bertsum --split test
+```
+
+```bash
+python3 main.py evaluate --model_type bart --model_path ./saved_models/bart --split test
+```
+
 ### Troubleshooting: Memory Issues (MPS/Mac)
 
 If you encounter `RuntimeError: MPS backend out of memory`, try reducing the batch size and increasing gradient accumulation steps:
